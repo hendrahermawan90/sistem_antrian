@@ -1,5 +1,4 @@
-
-## ✅ `README.md` Final untuk Sistem Antrian Otomatis
+## ✅ `README.md` Sistem Antrian Otomatis
 
 ```markdown
 # 🏢 Sistem Antrian Otomatis (Python + Tkinter)
@@ -55,23 +54,27 @@ Aplikasi **antrian otomatis** berbasis Python dan GUI (Tkinter) dengan fitur len
 ## 💻 Cara Menjalankan
 
 1. **Instal library yang dibutuhkan**
+   Sebelum menjalankan aplikasi, pastikan kamu sudah menginstall library yang dibutuhkan:
    ```bash
    pip install pyttsx3 qrcode fpdf pywin32
 ````
 
 2. **Ambil Antrian (oleh Pengunjung)**
+   Untuk pengunjung yang ingin mengambil antrian:
 
    ```bash
    python pengunjung.py
    ```
 
 3. **Panggil Nomor (oleh Admin)**
+   Untuk admin yang ingin memanggil nomor antrian:
 
    ```bash
    python admin.py
    ```
 
 4. **Tampilkan Display Antrian**
+   Untuk menampilkan nomor yang sedang dipanggil:
 
    ```bash
    python display.py
@@ -79,10 +82,66 @@ Aplikasi **antrian otomatis** berbasis Python dan GUI (Tkinter) dengan fitur len
 
 ---
 
+## 🛠️ Menjadikan Aplikasi Ini Sebagai `.exe`
+
+Untuk membuat aplikasi ini bisa dijalankan sebagai file `.exe` (tanpa membutuhkan Python di sistem target), kamu bisa menggunakan **PyInstaller**. Ikuti langkah-langkah berikut:
+
+### 1. **Instal PyInstaller**
+
+Install PyInstaller dengan perintah berikut:
+
+```bash
+pip install pyinstaller
+```
+
+### 2. **Buat File `.exe`**
+
+Masuk ke folder tempat file `.py` kamu berada, lalu jalankan perintah berikut untuk masing-masing file:
+
+* Untuk `pengunjung.py`:
+
+  ```bash
+  pyinstaller --onefile --windowed pengunjung.py
+  ```
+
+* Untuk `admin.py`:
+
+  ```bash
+  pyinstaller --onefile --windowed admin.py
+  ```
+
+* Untuk `display.py`:
+
+  ```bash
+  pyinstaller --onefile --windowed display.py
+  ```
+
+Opsi `--onefile` akan menghasilkan satu file `.exe`, dan `--windowed` akan mencegah munculnya terminal saat aplikasi dijalankan (karena menggunakan Tkinter).
+
+### 3. **File `.exe` di Folder `dist/`**
+
+Setelah proses selesai, kamu akan menemukan file `.exe` di folder `dist/`. File tersebut bisa langsung dijalankan di komputer lain tanpa perlu menginstal Python!
+
+* Misalnya: `dist/pengunjung.exe`, `dist/admin.exe`, `dist/display.exe`
+
+### 4. **(Opsional) Tambahkan Ikon**
+
+Kamu juga bisa menambahkan ikon untuk file `.exe` dengan menggunakan perintah berikut (pastikan file `.ico` kamu sudah siap):
+
+```bash
+pyinstaller --onefile --windowed --icon=ikon.ico admin.py
+```
+
+### 5. **Catatan**
+
+* Pastikan file `antrian.json` dan folder `tiket/` berada di direktori yang sama dengan file `.exe`.
+* Jika menggunakan printer, pastikan printer default sudah terpasang di sistem yang menjalankan aplikasi `.exe`.
+
+---
+
 ## 📸 Screenshot (Opsional)
 
-![image](https://github.com/user-attachments/assets/b813b1a7-40e7-4aca-8a97-3c3fe4f4cf6a)
-
+![image](https://github.com/user-attachments/assets/0b1ec248-2da4-4a7c-a4b3-8d28ad1233dc)
 
 ---
 
@@ -91,7 +150,7 @@ Aplikasi **antrian otomatis** berbasis Python dan GUI (Tkinter) dengan fitur len
 * Pastikan kamu punya **printer** yang diset sebagai **default** di Windows
 * File `antrian.json` akan otomatis dibuat jika belum ada
 * QR Code bersifat sementara dan akan dihapus setelah tiket dicetak
-* Jalankan semua file dari direktori yang sama
+* Jalankan semua file dari direktori yang sama agar file bisa saling berhubungan
 
 ---
 
@@ -104,3 +163,13 @@ Bebas digunakan dan dimodifikasi untuk keperluan pendidikan, kantor, klinik, ata
 ## 🙋‍♂️ Developer
 
 **Hendra**
+
+```
+
+---
+
+### Penjelasan Tambahan:
+- **Bagian "Menjadikan Aplikasi Ini Sebagai `.exe`"** memberikan instruksi lengkap mengenai cara mengubah script Python kamu menjadi file `.exe`, sehingga bisa dijalankan di Windows tanpa perlu install Python terlebih dahulu.
+- Pastikan file `.exe` dan file lainnya seperti `antrian.json` dan folder `tiket/` berada di folder yang sama agar aplikasi bisa berjalan dengan lancar.
+
+---
