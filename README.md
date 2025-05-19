@@ -1,4 +1,4 @@
-## ✅ `README.md` Sistem Antrian Otomatis
+## ✅ Sistem Antrian Otomatis
 
 ```markdown
 # 🏢 Sistem Antrian Otomatis (Python + Tkinter)
@@ -19,6 +19,7 @@ Aplikasi **antrian otomatis** berbasis Python dan GUI (Tkinter) dengan fitur len
 ├── admin.py         # Aplikasi pemanggilan nomor antrian oleh petugas
 ├── pengunjung.py    # Aplikasi ambil nomor antrian + cetak tiket otomatis
 ├── display.py       # Tampilan display nomor antrian real-time
+├── utils.py         # Fungsi utilitas bersama, termasuk reset harian otomatis
 ├── antrian.json     # File penyimpanan status antrian
 ├── log\_antrian.csv  # Log riwayat antrian (otomatis dibuat)
 └── tiket/
@@ -35,7 +36,7 @@ Aplikasi **antrian otomatis** berbasis Python dan GUI (Tkinter) dengan fitur len
 - 🖨️ **Cetak Tiket** dengan PDF + QR Code (siap print)
 - 🗣️ **Pemanggilan Otomatis** dengan Text-to-Speech (suara manusia)
 - 📺 **Display Realtime** untuk nomor yang sedang dipanggil
-- 🔁 **Reset Harian Otomatis**
+- 🔁 **Reset Harian Otomatis** *(via `utils.py`)*
 - 📄 **Log CSV** untuk riwayat data antrian
 
 ---
@@ -79,6 +80,20 @@ Aplikasi **antrian otomatis** berbasis Python dan GUI (Tkinter) dengan fitur len
    ```bash
    python display.py
    ```
+
+---
+
+## 🔁 Tentang Reset Otomatis Harian (`utils.py`)
+
+Agar sistem tetap akurat setiap hari, aplikasi ini secara otomatis **mereset antrian** jika hari telah berganti. Proses ini:
+
+* Mengecek tanggal terakhir dari `antrian.json`
+* Jika berbeda dengan hari ini, maka:
+
+  * `last_number` dan `last_called` direset ke `0`
+  * `last_date` diupdate ke tanggal hari ini
+
+Fungsi ini terletak di file `utils.py` dan **dijalankan otomatis** oleh `admin.py`, `pengunjung.py`, dan `display.py` saat aplikasi dibuka.
 
 ---
 
@@ -162,16 +177,8 @@ Bebas digunakan dan dimodifikasi untuk keperluan pendidikan, kantor, klinik, ata
 
 ## 🙋‍♂️ Developer
 
-**Hendra**
+**Hendra Hermawan**
 
-Link Github : https://github.com/hendrahermawan90/sistem_antrian
+Link Github : [https://github.com/hendrahermawan90/sistem\_antrian](https://github.com/hendrahermawan90/sistem_antrian)
 
 ```
-
----
-
-### Penjelasan Tambahan:
-- **Bagian "Menjadikan Aplikasi Ini Sebagai `.exe`"** memberikan instruksi lengkap mengenai cara mengubah script Python kamu menjadi file `.exe`, sehingga bisa dijalankan di Windows tanpa perlu install Python terlebih dahulu.
-- Pastikan file `.exe` dan file lainnya seperti `antrian.json` dan folder `tiket/` berada di folder yang sama agar aplikasi bisa berjalan dengan lancar.
-
----
